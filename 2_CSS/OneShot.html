@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Complete OneShot Guide</title>
+    <link rel="stylesheet" href="OneShot.css" />
+  </head>
+  <body>
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+      <h1>🎨 CSS Complete Guide</h1>
+      <ul class="nav-list">
+        <li><a href="#selectors">Selectors</a></li>
+        <li><a href="#box-model">Box Model</a></li>
+        <li><a href="#layout">Layout</a></li>
+        <li><a href="#flexbox">Flexbox</a></li>
+        <li><a href="#grid">Grid</a></li>
+        <li><a href="#positioning">Positioning</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#colors">Colors</a></li>
+        <li><a href="#animations">Animations</a></li>
+        <li><a href="#responsive">Responsive</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <!-- CSS SELECTORS SECTION -->
+      <section id="selectors" class="section">
+        <h2>🎯 CSS Selectors</h2>
+
+        <div class="demo-grid">
+          <!-- Element Selector -->
+          <div class="demo-item">
+            <h3>Element Selector</h3>
+            <div class="element-demo">
+              <p class="element-text">This paragraph uses element selector</p>
+            </div>
+          </div>
+
+          <!-- Class Selector -->
+          <div class="demo-item">
+            <h3>Class Selector</h3>
+            <div class="class-demo">
+              <p class="highlight">This uses .highlight class</p>
+              <p class="warning">This uses .warning class</p>
+            </div>
+          </div>
+
+          <!-- ID Selector -->
+          <div class="demo-item">
+            <h3>ID Selector</h3>
+            <div class="id-demo">
+              <p id="unique-text">This uses #unique-text ID</p>
+            </div>
+          </div>
+
+          <!-- Attribute Selector -->
+          <div class="demo-item">
+            <h3>Attribute Selector</h3>
+            <div class="attribute-demo">
+              <input type="text" placeholder="Text input" />
+              <input type="email" placeholder="Email input" />
+              <a href="#" title="External link">Link with title</a>
+            </div>
+          </div>
+
+          <!-- Pseudo Classes -->
+          <div class="demo-item">
+            <h3>Pseudo Classes</h3>
+            <div class="pseudo-demo">
+              <button class="hover-btn">Hover me</button>
+              <ul class="nth-child-demo">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Pseudo Elements -->
+          <div class="demo-item">
+            <h3>Pseudo Elements</h3>
+            <div class="pseudo-element-demo">
+              <p class="first-letter">This paragraph has styled first letter</p>
+              <p class="before-after">Content with before/after</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOX MODEL SECTION -->
+      <section id="box-model" class="section">
+        <h2>📦 Box Model</h2>
+
+        <div class="demo-grid">
+          <!-- Basic Box Model -->
+          <div class="demo-item">
+            <h3>Box Model Components</h3>
+            <div class="box-model-demo">
+              <div class="box-example">
+                <span>Content</span>
+              </div>
+              <p>Margin → Border → Padding → Content</p>
+            </div>
+          </div>
+
+          <!-- Box Sizing -->
+          <div class="demo-item">
+            <h3>Box Sizing</h3>
+            <div class="box-sizing-demo">
+              <div class="content-box">content-box</div>
+              <div class="border-box">border-box</div>
+            </div>
+          </div>
+
+          <!-- Margin & Padding -->
+          <div class="demo-item">
+            <h3>Margin & Padding</h3>
+            <div class="spacing-demo">
+              <div class="margin-example">Margin Example</div>
+              <div class="padding-example">Padding Example</div>
+            </div>
+          </div>
+
+          <!-- Border Examples -->
+          <div class="demo-item">
+            <h3>Borders</h3>
+            <div class="border-demo">
+              <div class="solid-border">Solid Border</div>
+              <div class="dashed-border">Dashed Border</div>
+              <div class="rounded-border">Rounded Border</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LAYOUT SECTION -->
+      <section id="layout" class="section">
+        <h2>🏗️ Layout Methods</h2>
+
+        <div class="demo-grid">
+          <!-- Display Property -->
+          <div class="demo-item">
+            <h3>Display Property</h3>
+            <div class="display-demo">
+              <div class="block-demo">Block Element</div>
+              <span class="inline-demo">Inline</span>
+              <span class="inline-demo">Elements</span>
+              <div class="inline-block-demo">Inline-Block</div>
+              <div class="none-demo">This is hidden (display: none)</div>
+            </div>
+          </div>
+
+          <!-- Float & Clear -->
+          <div class="demo-item">
+            <h3>Float & Clear</h3>
+            <div class="float-demo">
+              <div class="float-left">Float Left</div>
+              <div class="float-right">Float Right</div>
+              <div class="clear-both">Clear Both</div>
+            </div>
+          </div>
+
+          <!-- Overflow -->
+          <div class="demo-item">
+            <h3>Overflow</h3>
+            <div class="overflow-demo">
+              <div class="overflow-hidden">
+                <p>
+                  This content overflows but is hidden. Lorem ipsum dolor sit
+                  amet consectetur adipisicing elit.
+                </p>
+              </div>
+              <div class="overflow-scroll">
+                <p>
+                  This content overflows with scrollbar. Lorem ipsum dolor sit
+                  amet consectetur adipisicing elit. Accusamus.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FLEXBOX SECTION -->
+      <section id="flexbox" class="section">
+        <h2>🔄 Flexbox</h2>
+
+        <div class="demo-grid">
+          <!-- Flex Direction -->
+          <div class="demo-item">
+            <h3>Flex Direction</h3>
+            <div class="flex-direction-demo">
+              <div class="flex-row">
+                <div class="flex-item">1</div>
+                <div class="flex-item">2</div>
+                <div class="flex-item">3</div>
+              </div>
+              <div class="flex-column">
+                <div class="flex-item">1</div>
+                <div class="flex-item">2</div>
+                <div class="flex-item">3</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Justify Content -->
+          <div class="demo-item">
+            <h3>Justify Content</h3>
+            <div class="justify-demo">
+              <div class="justify-start">
+                <div class="flex-item">1</div>
+                <div class="flex-item">2</div>
+                <div class="flex-item">3</div>
+              </div>
+              <div class="justify-center">
+                <div class="flex-item">1</div>
+                <div class="flex-item">2</div>
+                <div class="flex-item">3</div>
+              </div>
+              <div class="justify-between">
+                <div class="flex-item">1</div>
+                <div class="flex-item">2</div>
+                <div class="flex-item">3</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Align Items -->
+          <div class="demo-item">
+            <h3>Align Items</h3>
+            <div class="align-demo">
+              <div class="align-start">
+                <div class="flex-item">1</div>
+                <div class="flex-item tall">2</div>
+                <div class="flex-item">3</div>
+              </div>
+              <div class="align-center">
+                <div class="flex-item">1</div>
+                <div class="flex-item tall">2</div>
+                <div class="flex-item">3</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flex Grow/Shrink -->
+          <div class="demo-item">
+            <h3>Flex Grow/Shrink</h3>
+            <div class="flex-grow-demo">
+              <div class="flex-grow-container">
+                <div class="flex-item flex-1">flex: 1</div>
+                <div class="flex-item flex-2">flex: 2</div>
+                <div class="flex-item flex-1">flex: 1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GRID SECTION -->
+      <section id="grid" class="section">
+        <h2>⚡ CSS Grid</h2>
+
+        <div class="demo-grid">
+          <!-- Basic Grid -->
+          <div class="demo-item">
+            <h3>Basic Grid</h3>
+            <div class="grid-basic">
+              <div class="grid-item">1</div>
+              <div class="grid-item">2</div>
+              <div class="grid-item">3</div>
+              <div class="grid-item">4</div>
+              <div class="grid-item">5</div>
+              <div class="grid-item">6</div>
+            </div>
+          </div>
+
+          <!-- Grid Areas -->
+          <div class="demo-item">
+            <h3>Grid Template Areas</h3>
+            <div class="grid-areas">
+              <div class="grid-header">Header</div>
+              <div class="grid-sidebar">Sidebar</div>
+              <div class="grid-main">Main</div>
+              <div class="grid-footer">Footer</div>
+            </div>
+          </div>
+
+          <!-- Grid Gap -->
+          <div class="demo-item">
+            <h3>Grid Gap</h3>
+            <div class="grid-gap">
+              <div class="grid-item">1</div>
+              <div class="grid-item">2</div>
+              <div class="grid-item">3</div>
+              <div class="grid-item">4</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- POSITIONING SECTION -->
+      <section id="positioning" class="section">
+        <h2>📍 Positioning</h2>
+
+        <div class="demo-grid">
+          <!-- Static & Relative -->
+          <div class="demo-item">
+            <h3>Static & Relative</h3>
+            <div class="position-demo">
+              <div class="static-pos">Static (default)</div>
+              <div class="relative-pos">Relative positioned</div>
+            </div>
+          </div>
+
+          <!-- Absolute & Fixed -->
+          <div class="demo-item">
+            <h3>Absolute & Fixed</h3>
+            <div class="position-container">
+              <div class="absolute-pos">Absolute</div>
+              <div class="relative-container">
+                Relative container
+                <div class="absolute-child">Absolute child</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky Position -->
+          <div class="demo-item">
+            <h3>Sticky Position</h3>
+            <div class="sticky-container">
+              <div class="sticky-header">Sticky Header</div>
+              <div class="sticky-content">
+                <p>Scroll content...</p>
+                <p>More content...</p>
+                <p>Even more content...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Z-Index -->
+          <div class="demo-item">
+            <h3>Z-Index</h3>
+            <div class="z-index-demo">
+              <div class="layer-1">Layer 1 (z-index: 1)</div>
+              <div class="layer-2">Layer 2 (z-index: 2)</div>
+              <div class="layer-3">Layer 3 (z-index: 3)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TYPOGRAPHY SECTION -->
+      <section id="typography" class="section">
+        <h2>🔤 Typography</h2>
+
+        <div class="demo-grid">
+          <!-- Font Properties -->
+          <div class="demo-item">
+            <h3>Font Properties</h3>
+            <div class="font-demo">
+              <p class="font-family">Different font-family</p>
+              <p class="font-size">Different font-size</p>
+              <p class="font-weight">Different font-weight</p>
+              <p class="font-style">Different font-style</p>
+            </div>
+          </div>
+
+          <!-- Text Properties -->
+          <div class="demo-item">
+            <h3>Text Properties</h3>
+            <div class="text-demo">
+              <p class="text-align-center">Text align center</p>
+              <p class="text-decoration">Text decoration</p>
+              <p class="text-transform">text transform</p>
+              <p class="letter-spacing">Letter spacing</p>
+              <p class="line-height">
+                This text has different line height for better readability
+              </p>
+            </div>
+          </div>
+
+          <!-- Text Effects -->
+          <div class="demo-item">
+            <h3>Text Effects</h3>
+            <div class="text-effects">
+              <p class="text-shadow">Text with shadow</p>
+              <p class="text-overflow">
+                This text will overflow and show ellipsis
+              </p>
+              <p class="word-wrap">ThisIsAVeryLongWordThatWillWrapToNextLine</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLORS SECTION -->
+      <section id="colors" class="section">
+        <h2>🎨 Colors & Backgrounds</h2>
+
+        <div class="demo-grid">
+          <!-- Color Values -->
+          <div class="demo-item">
+            <h3>Color Values</h3>
+            <div class="color-demo">
+              <div class="color-hex">Hex Color</div>
+              <div class="color-rgb">RGB Color</div>
+              <div class="color-hsl">HSL Color</div>
+              <div class="color-rgba">RGBA Color</div>
+            </div>
+          </div>
+
+          <!-- Gradients -->
+          <div class="demo-item">
+            <h3>Gradients</h3>
+            <div class="gradient-demo">
+              <div class="linear-gradient">Linear Gradient</div>
+              <div class="radial-gradient">Radial Gradient</div>
+              <div class="conic-gradient">Conic Gradient</div>
+            </div>
+          </div>
+
+          <!-- Background Properties -->
+          <div class="demo-item">
+            <h3>Background Properties</h3>
+            <div class="background-demo">
+              <div class="bg-color">Background Color</div>
+              <div class="bg-image">Background Image</div>
+              <div class="bg-repeat">Background Repeat</div>
+              <div class="bg-position">Background Position</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANIMATIONS SECTION -->
+      <section id="animations" class="section">
+        <h2>🎬 Animations & Transitions</h2>
+
+        <div class="demo-grid">
+          <!-- Transitions -->
+          <div class="demo-item">
+            <h3>CSS Transitions</h3>
+            <div class="transition-demo">
+              <div class="transition-hover">Hover for transition</div>
+              <div class="transition-all">Multiple properties</div>
+            </div>
+          </div>
+
+          <!-- Transforms -->
+          <div class="demo-item">
+            <h3>CSS Transforms</h3>
+            <div class="transform-demo">
+              <div class="transform-rotate">Rotate</div>
+              <div class="transform-scale">Scale</div>
+              <div class="transform-translate">Translate</div>
+              <div class="transform-skew">Skew</div>
+            </div>
+          </div>
+
+          <!-- Animations -->
+          <div class="demo-item">
+            <h3>CSS Animations</h3>
+            <div class="animation-demo">
+              <div class="bounce-animation">Bounce</div>
+              <div class="fade-animation">Fade</div>
+              <div class="slide-animation">Slide</div>
+            </div>
+          </div>
+
+          <!-- 3D Transforms -->
+          <div class="demo-item">
+            <h3>3D Transforms</h3>
+            <div class="transform-3d-demo">
+              <div class="cube">
+                <div class="face front">Front</div>
+                <div class="face back">Back</div>
+                <div class="face right">Right</div>
+                <div class="face left">Left</div>
+                <div class="face top">Top</div>
+                <div class="face bottom">Bottom</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESPONSIVE DESIGN SECTION -->
+      <section id="responsive" class="section">
+        <h2>📱 Responsive Design</h2>
+
+        <div class="demo-grid">
+          <!-- Media Queries -->
+          <div class="demo-item">
+            <h3>Media Queries</h3>
+            <div class="media-query-demo">
+              <div class="responsive-box">
+                <p>Resize window to see changes</p>
+                <p class="screen-size">Screen size indicator</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flexible Units -->
+          <div class="demo-item">
+            <h3>Flexible Units</h3>
+            <div class="units-demo">
+              <div class="em-unit">1em unit</div>
+              <div class="rem-unit">1rem unit</div>
+              <div class="vw-unit">10vw unit</div>
+              <div class="vh-unit">10vh unit</div>
+              <div class="percent-unit">50% unit</div>
+            </div>
+          </div>
+
+          <!-- Container Queries -->
+          <div class="demo-item">
+            <h3>Modern Features</h3>
+            <div class="modern-demo">
+              <div class="aspect-ratio">Aspect Ratio</div>
+              <div class="clamp-demo">Clamp() function</div>
+              <div class="gap-demo">
+                <div>Gap</div>
+                <div>Property</div>
+                <div>Demo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADVANCED CSS SECTION -->
+      <section id="advanced" class="section">
+        <h2>⚡ Advanced CSS</h2>
+
+        <div class="demo-grid">
+          <!-- CSS Variables -->
+          <div class="demo-item">
+            <h3>CSS Variables</h3>
+            <div class="variables-demo">
+              <div class="var-primary">Primary Color</div>
+              <div class="var-secondary">Secondary Color</div>
+              <button class="theme-toggle">Toggle Theme</button>
+            </div>
+          </div>
+
+          <!-- CSS Functions -->
+          <div class="demo-item">
+            <h3>CSS Functions</h3>
+            <div class="functions-demo">
+              <div class="calc-demo">calc() function</div>
+              <div class="min-max-demo">min/max functions</div>
+              <div class="clamp-function">clamp() function</div>
+            </div>
+          </div>
+
+          <!-- CSS Filters -->
+          <div class="demo-item">
+            <h3>CSS Filters</h3>
+            <div class="filter-demo">
+              <div class="filter-blur">Blur</div>
+              <div class="filter-brightness">Brightness</div>
+              <div class="filter-contrast">Contrast</div>
+              <div class="filter-grayscale">Grayscale</div>
+            </div>
+          </div>
+
+          <!-- CSS Shapes -->
+          <div class="demo-item">
+            <h3>CSS Shapes</h3>
+            <div class="shapes-demo">
+              <div class="shape-circle">Circle</div>
+              <div class="shape-triangle">Triangle</div>
+              <div class="shape-hexagon">Hexagon</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Fixed Theme Toggle -->
+    <div class="fixed-toggle">
+      <button id="theme-toggle">🌙</button>
+    </div>
+
+    <script>
+      // Theme toggle functionality
+      const themeToggle = document.getElementById("theme-toggle");
+      const body = document.body;
+
+      themeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-theme");
+        themeToggle.textContent = body.classList.contains("dark-theme")
+          ? "☀️"
+          : "🌙";
+      });
+
+      // Range input update for CSS variables
+      document.addEventListener("DOMContentLoaded", () => {
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
