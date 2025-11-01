@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script2.js" defer></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: aliceblue;
+      }
+
+      #card {
+        height: 400px;
+        width: 300px;
+        overflow: hidden;
+        border-radius: 15px;
+        background-color: rgb(200, 240, 241);
+        border: 2px solid black;
+        position: relative;
+      }
+
+      #storiyan{
+        height: 120px;
+        width: 100%;
+        border-bottom: 1px solid #b7afaf;
+        padding: 20px;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+
+      #storiyan::-webkit-scrollbar{
+        display: none;
+      }
+      .story{
+        border: 3px solid red;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: inline-block;
+      }
+
+      .story img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      #full-screen{
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-size: center;
+        position: absolute;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="card">
+        <div id="full-screen">
+
+        </div>
+        <div id="storiyan">
+           
+        </div>
+    </div>
+
+
+    <script>
+         const arr = [
+            {
+                DP: "https://plus.unsplash.com/premium_photo-1734498806724-a5e9431ff4f3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                story: "https://plus.unsplash.com/premium_photo-1734631072471-b2a9d81079a3?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            },
+            {
+                DP: "https://images.unsplash.com/photo-1734365294963-743f3ed421c1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                story: "https://images.unsplash.com/photo-1724722154056-f57482d540d7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            },
+            {
+                DP: "https://plus.unsplash.com/premium_photo-1734218351052-924f089b80c5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                story: "https://images.unsplash.com/photo-1733407826766-6361c7c1ea24?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            },
+            {
+                DP: "https://images.unsplash.com/photo-1734365294963-743f3ed421c1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                story: "https://images.unsplash.com/photo-1724722154056-f57482d540d7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            },
+         ]
+
+            const storiyan = document.getElementById("storiyan");
+            let clutter = "";
+            arr.forEach((elem,idx) => {
+            clutter += `
+                <div class="story">
+                    <img id="${idx}" src="${elem.DP}" alt="">
+                </div>
+            `
+         })
+         storiyan.innerHTML = clutter;
+         storiyan.addEventListener("click", (det)=> {
+            document.querySelector("#full-screen").style.display = "block";
+            document.querySelector("#full-screen").style.backgroundImage = `url(${(arr[det.target.id].story)})`
+            
+            setTimeout(() => {
+                document.querySelector("#full-screen").style.display = "none";
+            },3000)
+         })
+    </script>
+  </body>
+</html>
