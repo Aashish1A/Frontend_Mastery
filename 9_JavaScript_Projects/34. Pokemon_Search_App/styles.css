@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #1b1b32;
+}
+
+h2{
+    text-align: center;
+    color: rgba(255, 255, 255, 0.872);
+    font-size: 24px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+h1{
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.container{
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box{
+    width: 100%;
+    max-width: 450px;
+    background-color: #f0f1f7;
+    box-shadow: 0 4px 8px rgba(0, 8px, 16px, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 0;
+    gap: 10px;
+    border-radius: 12px;
+}
+
+#search-input{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid green;
+    font-size: 14px;
+}
+#search-button{
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: none;
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+}
+
+.id-h-w{
+    display: flex;
+    gap: 10px;
+}
+
+.dynamic-add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#pokemon-name{
+    height: 150px;
+    width: 150px;
+}
+
+.about-pokemon {
+    display: flex;
+    gap: 1rem; 
+}
+
+.about-pokemon span {
+    padding: 10px;
+    flex: 1;
+    max-width: 150px; 
+    min-width: 150px; 
+    background: purple;
+    color: white;
+    text-align: center; 
+    border-radius: 5px; 
+}
