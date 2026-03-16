@@ -1,150 +1,258 @@
-"use strict";
+/*
+====================================================
+JavaScript Objects & Arrays - Coding Revision
+====================================================
 
-// Objects and Arrays - In-Depth Revision Examples
-// Run this file with: node Objects_Arrays.js
+Topics Covered
 
-// 1) Object creation and access
+1. Object Creation
+2. Accessing Object Properties
+3. Adding & Updating Properties
+4. Deleting Properties
+5. Object Methods
+6. Object.keys / values / entries
+7. Destructuring
+8. Spread Operator
+9. Array Creation
+10. Array Methods
+11. Array Iteration
+12. Array Destructuring
+13. Important Interview Edge Cases
+
+====================================================
+*/
+
+
+// ==========================================
+// 1️⃣ Object Creation
+// ==========================================
+
+const user = {
+    name: "Aashish",
+    age: 21,
+    isStudent: true
+};
+
+console.log(user);
+
+
+// ==========================================
+// 2️⃣ Accessing Object Properties
+// ==========================================
+
+console.log(user.name);     // dot notation
+console.log(user["age"]);   // bracket notation
+
+
+
+// ==========================================
+// 3️⃣ Adding Properties
+// ==========================================
+
+user.city = "Delhi";
+
+console.log(user);
+
+
+
+// ==========================================
+// 4️⃣ Updating Properties
+// ==========================================
+
+user.age = 22;
+
+console.log(user);
+
+
+
+// ==========================================
+// 5️⃣ Deleting Properties
+// ==========================================
+
+delete user.isStudent;
+
+console.log(user);
+
+
+
+// ==========================================
+// 6️⃣ Object Methods
+// ==========================================
+
+const person = {
+    name: "Aashish",
+
+    greet(){
+        console.log("Hello " + this.name);
+    }
+};
+
+person.greet();
+
+
+
+// ==========================================
+// 7️⃣ Object.keys()
+// ==========================================
+
+const obj = {
+    a:1,
+    b:2,
+    c:3
+};
+
+console.log(Object.keys(obj));
+console.log(Object.values(obj));
+console.log(Object.entries(obj));
+
+
+
+// ==========================================
+// 8️⃣ Object Destructuring
+// ==========================================
+
 const student = {
-	id: 101,
-	name: "Aashish",
-	age: 21,
-	skills: ["HTML", "CSS", "JavaScript"],
-	address: {
-		city: "Delhi",
-		state: "Delhi",
-	},
+    name: "Rahul",
+    age: 20
 };
 
-console.log("1) Object access:", student.name, student["age"], student.address.city);
+const {name, age} = student;
 
-// 2) Add, update, delete properties
-student.isActive = true;
-student.age = 22;
-delete student.address.state;
-console.log("2) Mutated object:", student);
+console.log(name);
+console.log(age);
 
-// 3) Object methods and this keyword
-const profile = {
-	firstName: "Aashish",
-	lastName: "Kumar",
-	fullName() {
-		return `${this.firstName} ${this.lastName}`;
-	},
-};
-console.log("3) Object method:", profile.fullName());
 
-// 4) Object keys, values, entries
-console.log("4) Object.keys:", Object.keys(student));
-console.log("   Object.values:", Object.values(student));
-console.log("   Object.entries:", Object.entries(student));
 
-// 5) Optional chaining and nullish coalescing
-console.log("5) Optional chaining:", student?.address?.pinCode);
-console.log("   Nullish fallback:", student?.address?.pinCode ?? "Pin not provided");
+// ==========================================
+// 9️⃣ Spread Operator
+// ==========================================
 
-// 6) Shallow copy
-const studentCopy = { ...student };
-studentCopy.name = "Copied Student";
-console.log("6) Shallow copy names:", student.name, studentCopy.name);
+const user1 = {name:"Aashish"};
+const user2 = {age:21};
 
-// 7) Array basics
-const numbers = [10, 20, 30, 40, 50];
-console.log("7) Array basics:", numbers[0], numbers.length);
+const mergedUser = {...user1, ...user2};
 
-// 8) push, pop, shift, unshift
-const queue = ["B", "C"];
-queue.unshift("A");
-queue.push("D");
-const removedLast = queue.pop();
-const removedFirst = queue.shift();
-console.log("8) Queue operations:", queue, removedLast, removedFirst);
+console.log(mergedUser);
 
-// 9) slice vs splice
-const values = [1, 2, 3, 4, 5];
-const sliced = values.slice(1, 4);
-const splicedOut = values.splice(2, 1, 99);
-console.log("9) slice result:", sliced);
-console.log("   splice removed:", splicedOut, "updated array:", values);
 
-// 10) map, filter, reduce
-const prices = [100, 250, 400, 150];
-const withTax = prices.map((price) => price * 1.18);
-const expensive = prices.filter((price) => price >= 200);
-const total = prices.reduce((sum, p) => sum + p, 0);
-console.log("10) map/filter/reduce:", withTax, expensive, total);
 
-// 11) find, findIndex, some, every, includes
-const users = [
-	{ id: 1, name: "Riya", active: true },
-	{ id: 2, name: "Rahul", active: false },
-	{ id: 3, name: "Anu", active: true },
-];
+// ==========================================
+// 🔟 Array Creation
+// ==========================================
 
-console.log("11) find:", users.find((u) => u.id === 2));
-console.log("    findIndex:", users.findIndex((u) => u.name === "Anu"));
-console.log("    some active:", users.some((u) => u.active));
-console.log("    every active:", users.every((u) => u.active));
-console.log("    includes check:", ["js", "css", "html"].includes("css"));
+const numbers = [10,20,30,40];
 
-// 12) sort and reverse
-const randomNums = [44, 2, 19, 101, 6];
-const sortedAsc = [...randomNums].sort((m, n) => m - n);
-const sortedDesc = [...randomNums].sort((m, n) => n - m);
-console.log("12) sort:", sortedAsc, sortedDesc);
+console.log(numbers);
 
-// 13) Destructuring arrays and objects
-const [first, second, ...rest] = numbers;
-const { name: studentName, age: studentAge } = student;
-console.log("13) Destructuring:", first, second, rest, studentName, studentAge);
 
-// 14) Spread and rest patterns
-const arrOne = [1, 2, 3];
-const arrTwo = [4, 5, 6];
-const merged = [...arrOne, ...arrTwo];
 
-function logTopTwo(label, ...items) {
-	console.log(`14) ${label}:`, items[0], items[1]);
-}
-console.log("   merged:", merged);
-logTopTwo("Top two", ...merged);
+// ==========================================
+// 1️⃣1️⃣ Accessing Array Elements
+// ==========================================
 
-// 15) Nested object/array traversal
-const catalog = {
-	category: "Electronics",
-	products: [
-		{ id: 1, title: "Laptop", price: 55000 },
-		{ id: 2, title: "Mouse", price: 800 },
-	],
-};
+console.log(numbers[0]);
+console.log(numbers[2]);
 
-for (const product of catalog.products) {
-	console.log(`15) Product: ${product.title} - INR ${product.price}`);
-}
 
-// 16) Grouping data with reduce
-const orders = [
-	{ id: 1, status: "pending" },
-	{ id: 2, status: "done" },
-	{ id: 3, status: "pending" },
-	{ id: 4, status: "cancelled" },
-];
 
-const groupedByStatus = orders.reduce((acc, order) => {
-	if (!acc[order.status]) acc[order.status] = [];
-	acc[order.status].push(order);
-	return acc;
-}, {});
-console.log("16) Grouped orders:", groupedByStatus);
+// ==========================================
+// 1️⃣2️⃣ Array Methods
+// ==========================================
 
-// 17) Immutable updates (important for state management)
-const originalTodos = [
-	{ id: 1, text: "Learn JS", done: false },
-	{ id: 2, text: "Build project", done: false },
-];
+const arr = [1,2,3];
 
-const updatedTodos = originalTodos.map((todo) =>
-	todo.id === 2 ? { ...todo, done: true } : todo
-);
+arr.push(4);   // add end
+arr.pop();     // remove end
 
-console.log("17) Original todos:", originalTodos);
-console.log("    Updated todos:", updatedTodos);
+arr.unshift(0); // add beginning
+arr.shift();    // remove beginning
+
+console.log(arr);
+
+
+
+// ==========================================
+// 1️⃣3️⃣ Array Iteration
+// ==========================================
+
+const nums = [1,2,3,4];
+
+nums.forEach(function(num){
+    console.log(num);
+});
+
+
+
+// ==========================================
+// 1️⃣4️⃣ map()
+// ==========================================
+
+const doubled = nums.map(function(num){
+    return num * 2;
+});
+
+console.log(doubled);
+
+
+
+// ==========================================
+// 1️⃣5️⃣ filter()
+// ==========================================
+
+const even = nums.filter(function(num){
+    return num % 2 === 0;
+});
+
+console.log(even);
+
+
+
+// ==========================================
+// 1️⃣6️⃣ reduce()
+// ==========================================
+
+const sum = nums.reduce(function(total,num){
+    return total + num;
+},0);
+
+console.log(sum);
+
+
+
+// ==========================================
+// 1️⃣7️⃣ Array Destructuring
+// ==========================================
+
+const colors = ["red","green","blue"];
+
+const [first, second] = colors;
+
+console.log(first);
+console.log(second);
+
+
+
+// ==========================================
+// 1️⃣8️⃣ Important Interview Edge Cases
+// ==========================================
+
+// arrays are objects
+console.log(typeof []); // object
+
+
+// object comparison
+// console.log({} === {}); // false
+
+
+// array comparison
+// console.log([] === []); // false
+
+
+// reference behavior
+
+let a = {value:10};
+let b = a;
+
+b.value = 20;
+
+console.log(a.value); // 20
