@@ -1,151 +1,524 @@
-# JavaScript Fundamentals
+# JavaScript Fundamentals – Interview Revision
 
-This section builds a strong base before advanced JavaScript topics.
+This section covers the **core fundamentals of JavaScript** that are frequently asked in interviews.
+Understanding these concepts is extremely important because most interview questions build on these basics.
 
-## What to Master
+---
 
-1. JavaScript engine basics and execution context
-2. Variable declarations: var, let, const
-3. Primitive values and dynamic typing
-4. Operators, conditions, loops, and control flow
-5. Type conversion, coercion, and edge cases
-6. Strict mode, truthy/falsy, and common pitfalls
+# 1. What is JavaScript?
 
-## Practice File
+JavaScript is a **high-level, interpreted programming language** used to build **dynamic and interactive web applications**.
 
-Run: `Fundamentals.js`
+It is one of the three core technologies of web development:
 
-## Top Interview Questions (Detailed)
+* HTML → Structure
+* CSS → Styling
+* JavaScript → Logic & Interactivity
 
-### 1) What is the difference between var, let, and const?
+JavaScript runs inside the **browser using a JavaScript engine**.
 
-- `var`: function-scoped, re-declarable, hoisted with `undefined`.
-- `let`: block-scoped, mutable, cannot be re-declared in same scope.
-- `const`: block-scoped, cannot be reassigned after declaration.
+Examples of JavaScript engines:
 
-### 2) What is hoisting in JavaScript?
+* Chrome → V8 Engine
+* Firefox → SpiderMonkey
+* Safari → JavaScriptCore
 
-Hoisting means declarations are conceptually moved to top of scope during compilation.
-- Function declarations are hoisted with body.
-- `var` is hoisted and initialized as `undefined`.
-- `let` and `const` are hoisted but uninitialized until declaration.
+JavaScript can also run outside the browser using **Node.js**.
 
-### 3) What is temporal dead zone (TDZ)?
+Example:
 
-TDZ is the phase from block start to declaration line where `let`/`const` variables exist but cannot be accessed. Access causes `ReferenceError`.
+```javascript
+console.log("Hello JavaScript");
+```
 
-### 4) What are truthy and falsy values?
+JavaScript is commonly used for:
 
-Falsy values: `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined`, `NaN`.
-Everything else is truthy.
+* DOM Manipulation
+* API Calls
+* Form Validation
+* Dynamic UI Updates
+* Event Handling
+* Single Page Applications (React, Angular, Vue)
 
-### 5) What is strict mode and why is it useful?
+---
 
-`"use strict"` prevents unsafe behaviors and catches silent bugs (like accidental globals), making code predictable and easier to debug.
+# 2. Is JavaScript a Compiled or Interpreted Language?
 
-### 6) Explain type conversion vs type coercion.
+JavaScript is **interpreted**, but modern engines use **Just-In-Time (JIT) compilation**.
 
-- Conversion is explicit (`Number("42")`).
-- Coercion is implicit (`"5" + 1` becomes string concatenation).
+How it works internally:
 
-### 7) What is the difference between == and ===?
+1. JavaScript code is parsed.
+2. Engine converts it to **bytecode**.
+3. Frequently used code gets **optimized and compiled into machine code**.
 
-- `==` allows type coercion.
-- `===` compares both value and type strictly.
+Example engine:
 
-### 8) What are execution contexts?
+Chrome V8 Engine.
 
-JavaScript runs in execution contexts:
-- Global context (created first)
-- Function context (created per function call)
-Each context has variable environment, lexical environment, and `this` binding.
+---
 
-### 9) What is lexical scope?
+# 3. Is JavaScript Single Threaded?
 
-A function can access variables from scopes where it was defined, not where it is called.
+Yes, JavaScript is **single-threaded**.
 
-### 10) Why is typeof null equal to object?
+This means it can **execute only one task at a time**.
 
-This is a historical JavaScript implementation quirk kept for backward compatibility.
+JavaScript uses a **single call stack** to execute code.
 
-## MCQs with Answers and Explanations
+However, JavaScript can still perform asynchronous operations using:
 
-1. Which keyword is function-scoped?
-	- A) let
-	- B) const
-	- C) var
-	- D) all of these
-	- Answer: C
-	- Explanation: `var` follows function scope.
+* Event Loop
+* Callback Queue
+* Web APIs
+* Promises
+* Async/Await
 
-2. Which of these is not falsy?
-	- A) 0
-	- B) ""
-	- C) []
-	- D) null
-	- Answer: C
-	- Explanation: Empty arrays are truthy.
+Example:
 
-3. `"5" + 2` gives:
-	- A) 7
-	- B) "52"
-	- C) NaN
-	- D) error
-	- Answer: B
-	- Explanation: String concatenation happens.
+```javascript
+console.log("Start");
 
-4. `"5" - 2` gives:
-	- A) 3
-	- B) "52"
-	- C) NaN
-	- D) undefined
-	- Answer: A
-	- Explanation: Numeric coercion occurs with `-`.
+setTimeout(() => {
+  console.log("Async Task");
+}, 1000);
 
-5. Best equality operator for predictable checks?
-	- A) ==
-	- B) ===
-	- C) =
-	- D) !=
-	- Answer: B
-	- Explanation: Strict equality avoids coercion surprises.
+console.log("End");
+```
 
-6. `typeof null` is:
-	- A) null
-	- B) undefined
-	- C) object
-	- D) number
-	- Answer: C
-	- Explanation: Legacy behavior.
+Output:
 
-7. Which declaration cannot be reassigned?
-	- A) var
-	- B) let
-	- C) const
-	- D) all
-	- Answer: C
-	- Explanation: `const` binding is fixed.
+```
+Start
+End
+Async Task
+```
 
-8. TDZ applies to:
-	- A) var only
-	- B) function declarations only
-	- C) let and const
-	- D) objects only
-	- Answer: C
-	- Explanation: Access before declaration throws error.
+This happens because **setTimeout runs asynchronously**.
 
-9. JavaScript is:
-	- A) statically typed
-	- B) dynamically typed
-	- C) compile-time typed only
-	- D) strongly static only
-	- Answer: B
-	- Explanation: Types are attached to values at runtime.
+---
 
-10. Strict mode helps by:
-	 - A) making code slower
-	 - B) ignoring errors
-	 - C) catching unsafe patterns
-	 - D) converting JS to TypeScript
-	 - Answer: C
-	 - Explanation: It surfaces hidden mistakes early.
+# 4. What are Variables in JavaScript?
+
+Variables are containers used to **store data values**.
+
+JavaScript provides three ways to declare variables:
+
+* var
+* let
+* const
+
+Example:
+
+```javascript
+var name = "Aashish";
+let age = 21;
+const country = "India";
+```
+
+---
+
+# 5. What is the Difference Between var, let, and const?
+
+### var
+
+`var` is the older way of declaring variables.
+
+Characteristics:
+
+* Function scoped
+* Can be redeclared
+* Can be reassigned
+* Hoisted
+
+Example:
+
+```javascript
+var x = 10;
+var x = 20;
+
+console.log(x); // 20
+```
+
+---
+
+### let
+
+`let` was introduced in **ES6 (2015)**.
+
+Characteristics:
+
+* Block scoped
+* Cannot be redeclared
+* Can be reassigned
+* Hoisted but in Temporal Dead Zone
+
+Example:
+
+```javascript
+let age = 20;
+age = 21;
+```
+
+---
+
+### const
+
+`const` is used for values that should not change.
+
+Characteristics:
+
+* Block scoped
+* Cannot be redeclared
+* Cannot be reassigned
+* Must be initialized during declaration
+
+Example:
+
+```javascript
+const PI = 3.14;
+```
+
+Note:
+
+Objects declared with const can still be modified internally.
+
+Example:
+
+```javascript
+const user = { name: "Aashish" };
+
+user.name = "Rahul"; // allowed
+```
+
+---
+
+# 6. What are the Naming Rules for Variables?
+
+Rules:
+
+* Variable names can contain letters, numbers, `_`, `$`
+* Cannot start with numbers
+* Cannot use reserved keywords
+* JavaScript is case-sensitive
+
+Valid examples:
+
+```javascript
+let userName;
+let _price;
+let $amount;
+```
+
+Invalid examples:
+
+```javascript
+let 1name;
+let user-name;
+```
+
+---
+
+# 7. What are Data Types in JavaScript?
+
+JavaScript has **two main categories of data types**.
+
+---
+
+## Primitive Data Types
+
+Primitive values are **immutable** and stored directly in memory.
+
+Types:
+
+* String
+* Number
+* Boolean
+* Undefined
+* Null
+* Symbol
+* BigInt
+
+Example:
+
+```javascript
+let name = "Aashish";
+let age = 21;
+let isStudent = true;
+let value = null;
+let x;
+```
+
+---
+
+## Non-Primitive (Reference) Data Types
+
+These store **references to memory locations**.
+
+Types:
+
+* Object
+* Array
+* Function
+
+Example:
+
+```javascript
+let user = {
+  name: "Aashish",
+  age: 21
+};
+
+let numbers = [1,2,3,4];
+
+function greet(){
+  console.log("Hello");
+}
+```
+
+---
+
+# 8. What is the typeof Operator?
+
+The `typeof` operator is used to determine the **data type of a variable**.
+
+Example:
+
+```javascript
+console.log(typeof "Hello"); 
+console.log(typeof 10);
+console.log(typeof true);
+```
+
+Output:
+
+```
+string
+number
+boolean
+```
+
+---
+
+# 9. Why Does typeof null Return "object"?
+
+Example:
+
+```javascript
+console.log(typeof null);
+```
+
+Output:
+
+```
+object
+```
+
+This is actually a **bug in JavaScript** from the early implementation of the language.
+
+It was never fixed because fixing it would break existing websites.
+
+---
+
+# 10. What is the Difference Between null and undefined?
+
+### undefined
+
+A variable that has been declared but **not assigned a value**.
+
+Example:
+
+```javascript
+let x;
+console.log(x);
+```
+
+Output:
+
+```
+undefined
+```
+
+---
+
+### null
+
+`null` represents an **intentional absence of value**.
+
+Example:
+
+```javascript
+let user = null;
+```
+
+It means the variable is intentionally empty.
+
+---
+
+# 11. What are Comments in JavaScript?
+
+Comments are used to **explain code** and are ignored during execution.
+
+### Single Line Comment
+
+```javascript
+// this is a comment
+```
+
+### Multi Line Comment
+
+```javascript
+/*
+multi line
+comment
+*/
+```
+
+---
+
+# Most Asked MCQ Questions (JavaScript Fundamentals)
+
+---
+
+### MCQ 1
+
+What will be the output?
+
+```javascript
+console.log(typeof null)
+```
+
+**Options:**
+
+- **A.** null
+- **B.** object
+- **C.** undefined
+- **D.** error
+
+**Answer:** `object`
+
+---
+
+### MCQ 2
+
+Which keyword cannot be reassigned?
+
+- **A.** var
+- **B.** let
+- **C.** const
+- **D.** function
+
+**Answer:** `const`
+
+---
+
+### MCQ 3
+
+JavaScript is a:
+
+- **A.** Multi-threaded language
+- **B.** Single-threaded language
+- **C.** Compiled language
+- **D.** Assembly language
+
+**Answer:** `Single-threaded language`
+
+---
+
+### MCQ 4
+
+Which of the following is NOT a primitive data type?
+
+- **A.** String
+- **B.** Number
+- **C.** Boolean
+- **D.** Object
+
+**Answer:** `Object`
+
+---
+
+### MCQ 5
+
+Which keyword was introduced in ES6?
+
+- **A.** var
+- **B.** let
+- **C.** goto
+- **D.** public
+
+**Answer:** `let`
+
+---
+
+### MCQ 6
+
+What will be the output?
+
+```javascript
+let x;
+console.log(x);
+```
+
+**Options:**
+
+- **A.** null
+- **B.** undefined
+- **C.** error
+- **D.** 0
+
+**Answer:** `undefined`
+
+---
+
+### MCQ 7
+
+Which symbol is used for single line comments?
+
+- **A.** `//`
+- **B.** `/* */`
+- **C.** `#`
+- **D.** `--`
+
+**Answer:** `//`
+
+---
+
+### MCQ 8
+
+Which variable declaration allows redeclaration?
+
+- **A.** let
+- **B.** const
+- **C.** var
+- **D.** none
+
+**Answer:** `var`
+
+---
+
+### MCQ 9
+
+Which data type is immutable?
+
+- **A.** Object
+- **B.** Array
+- **C.** Primitive types
+- **D.** Function
+
+**Answer:** `Primitive types`
+
+---
+
+### MCQ 10
+
+Which JavaScript engine is used by Chrome?
+
+- **A.** Chakra
+- **B.** SpiderMonkey
+- **C.** V8
+- **D.** Rhino
+
+**Answer:** `V8`
+
+---
