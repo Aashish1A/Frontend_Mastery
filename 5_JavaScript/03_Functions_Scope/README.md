@@ -1,146 +1,444 @@
-# Functions and Scope
+# JavaScript Functions, Scope, Hoisting & Closures – Interview Questions
 
-Functions are the core reusable unit in JavaScript. Scope controls variable visibility and memory access.
+This section covers **very important JavaScript interview concepts** related to:
 
-## What to Master
+* Functions
+* Scope
+* Hoisting
+* Closures
 
-1. Function declaration, expression, and arrow functions
-2. Parameters, default values, rest parameters
-3. Return behavior
-4. Scope: global, function, block
-5. Closures and lexical environment
+These topics are **frequently asked in frontend interviews** because they explain how JavaScript works internally.
 
-## Practice File
+---
 
-Run: `Functions_Scope.js`
+# 1. What is a Function in JavaScript?
 
-## Top Interview Questions (Detailed)
+A function is a **block of reusable code** that performs a specific task.
 
-### 1) Function declaration vs expression vs arrow function?
+Functions help make code **modular, reusable, and easier to maintain**.
 
-- Declarations are hoisted with full definition.
-- Expressions are assigned to variables and are not fully usable before assignment.
-- Arrow functions have lexical `this`, no own `arguments`, and cannot be used as constructors with `new`.
+Example:
 
-### 2) What is lexical scope?
+```javascript
+function greet(){
+  console.log("Hello JavaScript");
+}
 
-An inner function can access variables from parent scopes where it was defined, not where it is called.
+greet();
+```
 
-### 3) What is a closure?
+Here `greet` is a function that prints a message.
 
-A closure is a function plus the references to variables from its outer lexical scope. This allows state to persist between calls, such as counters, memoization, and private-like data.
+---
 
-### 4) Why are `let`/`const` safer in blocks?
+# 2. What is the difference between Parameters and Arguments?
 
-They are block-scoped, reducing accidental variable leakage and bugs in loops/conditions. `var` can escape blocks and create hard-to-debug side effects.
+**Parameters** are variables defined in the function definition.
 
-### 5) What is the temporal dead zone?
+**Arguments** are the actual values passed when calling the function.
 
-It is the region from start of block until `let`/`const` declaration where the variable exists but cannot be accessed. Accessing it throws `ReferenceError`.
+Example:
 
-### 6) What are default parameters?
+```javascript
+function add(a, b){   // a and b are parameters
+  return a + b;
+}
 
-Default parameters let you provide fallback values when argument is `undefined`, improving function resilience.
+add(5, 3); // 5 and 3 are arguments
+```
 
-### 7) What is the difference between rest parameter and spread operator?
+---
 
-- Rest (`...args`) in parameter position collects multiple arguments into array.
-- Spread (`...arr`) in call/array/object expands iterable elements.
+# 3. What is a Function Declaration?
 
-### 8) Explain callback and higher-order function.
+A function declaration is defined using the `function` keyword.
 
-- Callback: function passed into another function.
-- Higher-order function: function that accepts/returns function.
-They are core patterns in JavaScript design.
+Example:
 
-### 9) What is function purity?
+```javascript
+function sayHello(){
+  console.log("Hello");
+}
+```
 
-A pure function gives same output for same input and has no side effects. Pure functions are easy to test and reason about.
+Important property:
 
-### 10) What are call, apply, and bind?
+Function declarations are **hoisted**, meaning they can be called before they appear in the code.
 
-- `call(thisArg, a, b)` invokes immediately.
-- `apply(thisArg, [a, b])` invokes immediately with array args.
-- `bind(thisArg)` returns new bound function.
+Example:
 
-## MCQs with Answers and Explanations
+```javascript
+sayHello();
 
-1. Which function type has lexical `this`?
-	- A) Function declaration
-	- B) Function expression
-	- C) Arrow function
-	- D) Constructor function
-	- Answer: C
-	- Explanation: Arrow functions inherit `this` from surrounding scope.
+function sayHello(){
+  console.log("Hello");
+}
+```
 
-2. Which is true about closures?
-	- A) They destroy outer scope variables
-	- B) They keep access to lexical scope even after outer function returns
-	- C) They work only with `var`
-	- D) They cannot return functions
-	- Answer: B
-	- Explanation: Closure retains references to outer variables.
+---
 
-3. Can an arrow function be used with `new`?
-	- A) Yes
-	- B) No
-	- C) Only in strict mode
-	- D) Only with default params
-	- Answer: B
-	- Explanation: Arrow functions are not constructible.
+# 4. What is a Function Expression?
 
-4. Which scope does `let` use?
-	- A) Function scope only
-	- B) Global scope only
-	- C) Block scope
-	- D) Module scope only
-	- Answer: C
-	- Explanation: `let` follows block boundaries.
+A function expression is when a function is assigned to a variable.
 
-5. Default parameter is used when argument is:
-	- A) `null`
-	- B) `0`
-	- C) `undefined`
-	- D) `false`
-	- Answer: C
-	- Explanation: Default parameter triggers for `undefined`.
+Example:
 
-6. `...args` in function parameters is:
-	- A) spread operator
-	- B) rest parameter
-	- C) destructuring only
-	- D) optional chaining
-	- Answer: B
-	- Explanation: In parameter position, `...` collects remaining arguments into an array.
+```javascript
+const greet = function(){
+  console.log("Hello");
+};
+```
 
-7. Which statement is true about closures?
-	- A) They only work with global variables
-	- B) They keep lexical scope access alive
-	- C) They cannot return functions
-	- D) They remove scope chain
-	- Answer: B
-	- Explanation: Closures preserve lexical references.
+Unlike function declarations, **function expressions are not hoisted in the same way**.
 
-8. `bind()` does what?
-	- A) calls function immediately
-	- B) delays function by setTimeout
-	- C) returns new function with fixed this
-	- D) clones function deeply
-	- Answer: C
-	- Explanation: `bind` creates bound function reference.
+Calling them before definition causes an error.
 
-9. Pure function means:
-	- A) modifies global state
-	- B) random output each call
-	- C) deterministic and no side effects
-	- D) only arrow function
-	- Answer: C
-	- Explanation: Pure functions are predictable.
+---
 
-10. Which is a higher-order function?
-	 - A) function add(a, b)
-	 - B) function that receives function argument
-	 - C) function returning number only
-	 - D) function without return
-	 - Answer: B
-	 - Explanation: Accepting/returning functions defines higher-order functions.
+# 5. What are Arrow Functions?
+
+Arrow functions were introduced in **ES6** and provide a shorter syntax for writing functions.
+
+Example:
+
+```javascript
+const add = (a, b) => {
+  return a + b;
+};
+```
+
+Short version:
+
+```javascript
+const square = n => n * n;
+```
+
+Important point:
+
+Arrow functions **do not have their own `this` binding**.
+
+---
+
+# 6. What are Default Parameters?
+
+Default parameters allow functions to have **default values if no argument is passed**.
+
+Example:
+
+```javascript
+function greet(name = "Guest"){
+  console.log("Hello " + name);
+}
+
+greet();
+```
+
+Output:
+
+```
+Hello Guest
+```
+
+---
+
+# 7. What are Rest Parameters?
+
+Rest parameters allow a function to accept **multiple arguments as an array**.
+
+Example:
+
+```javascript
+function sum(...numbers){
+  return numbers.reduce((a,b)=>a+b,0);
+}
+
+sum(1,2,3,4);
+```
+
+Here `numbers` becomes an array.
+
+---
+
+# 8. What is Scope in JavaScript?
+
+Scope determines **where variables are accessible in the program**.
+
+JavaScript has three main scopes:
+
+* Global Scope
+* Function Scope
+* Block Scope
+
+---
+
+# 9. What is Global Scope?
+
+A variable declared outside functions has **global scope**.
+
+Example:
+
+```javascript
+let name = "Aashish";
+
+function printName(){
+  console.log(name);
+}
+```
+
+Global variables can be accessed anywhere in the program.
+
+---
+
+# 10. What is Function Scope?
+
+Variables declared inside a function can only be accessed **inside that function**.
+
+Example:
+
+```javascript
+function test(){
+  let x = 10;
+  console.log(x);
+}
+```
+
+Accessing `x` outside the function will cause an error.
+
+---
+
+# 11. What is Block Scope?
+
+Variables declared using `let` or `const` inside `{}` are **block scoped**.
+
+Example:
+
+```javascript
+{
+  let x = 10;
+}
+
+console.log(x); // error
+```
+
+---
+
+# 12. What is Lexical Scope?
+
+Lexical scope means that **a function can access variables from its parent scope**.
+
+Example:
+
+```javascript
+function outer(){
+
+  let message = "Hello";
+
+  function inner(){
+    console.log(message);
+  }
+
+  inner();
+}
+```
+
+Here `inner()` can access `message`.
+
+---
+
+# 13. What is Hoisting in JavaScript?
+
+Hoisting is JavaScript's behavior where **variable and function declarations are moved to the top of their scope before execution**.
+
+Example:
+
+```javascript
+console.log(x);
+
+var x = 10;
+```
+
+Output:
+
+```
+undefined
+```
+
+This happens because `var x` is hoisted.
+
+---
+
+# 14. What is Temporal Dead Zone (TDZ)?
+
+Temporal Dead Zone is the time between **variable declaration and initialization** when accessing the variable causes an error.
+
+Example:
+
+```javascript
+console.log(a);
+
+let a = 10;
+```
+
+This will throw a **ReferenceError**.
+
+---
+
+# 15. What is a Closure in JavaScript?
+
+A closure is a function that **remembers variables from its outer scope even after the outer function has finished executing**.
+
+Example:
+
+```javascript
+function outer(){
+
+  let count = 0;
+
+  return function inner(){
+    count++;
+    console.log(count);
+  };
+
+}
+
+const counter = outer();
+
+counter();
+counter();
+```
+
+Output:
+
+```
+1
+2
+```
+
+The inner function remembers the `count` variable.
+
+Closures are used in:
+
+* Data privacy
+* Function factories
+* Event handlers
+* React hooks
+
+---
+
+# 16. What is an IIFE?
+
+IIFE means **Immediately Invoked Function Expression**.
+
+It runs immediately after it is defined.
+
+Example:
+
+```javascript
+(function(){
+  console.log("Executed immediately");
+})();
+```
+
+---
+
+# Most Asked MCQ Questions
+
+---
+
+### MCQ 1
+
+What will be the output?
+
+```javascript
+console.log(x);
+var x = 10;
+```
+
+**Options:**
+
+- **A.** 10
+- **B.** undefined
+- **C.** error
+- **D.** null
+
+**Answer:** `undefined`
+
+---
+
+### MCQ 2
+
+Which keyword creates block scope?
+
+- **A.** var
+- **B.** let
+- **C.** const
+- **D.** both B and C
+
+**Answer:** `both B and C`
+
+---
+
+### MCQ 3
+
+What is a closure?
+
+A function that:
+
+- **A.** Runs automatically
+- **B.** Stores data in database
+- **C.** Remembers variables from outer scope
+- **D.** Executes only once
+
+**Answer:** `Remembers variables from outer scope`
+
+---
+
+### MCQ 4
+
+Which function type does NOT have its own `this`?
+
+- **A.** Function declaration
+- **B.** Function expression
+- **C.** Arrow function
+- **D.** Constructor function
+
+**Answer:** `Arrow function`
+
+---
+
+### MCQ 5
+
+What will be the output?
+
+```javascript
+function test(){
+  console.log(a);
+  var a = 5;
+}
+
+test();
+```
+
+**Options:**
+
+- **A.** 5
+- **B.** undefined
+- **C.** error
+- **D.** null
+
+**Answer:** `undefined`
+
+---
+
+# Quick Revision Points
+
+* Functions make code reusable
+* JavaScript supports different types of functions
+* Scope controls variable accessibility
+* Hoisting moves declarations to the top
+* Closures allow functions to remember outer variables
+* Arrow functions have lexical `this`
+
+These topics are **very commonly asked in JavaScript interviews**.
+
+---
