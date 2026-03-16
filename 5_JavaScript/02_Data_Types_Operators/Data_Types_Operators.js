@@ -1,122 +1,414 @@
-"use strict";
+/*
+====================================================
+JavaScript Data Types & Operators - Coding Revision
+====================================================
 
-// Data Types and Operators - In-Depth Revision Examples
-// Run this file with: node Data_Types_Operators.js
+Topics Covered
 
-// 1) Primitive and reference types
-const s = "hello";
-const n = 99;
-const b = true;
-const nl = null;
-let u;
-const sym = Symbol("id");
-const big = 123456789012345678901234567890n;
+1. Primitive Data Types
+2. Non-Primitive Data Types
+3. typeof operator
+4. Arithmetic Operators
+5. Assignment Operators
+6. Comparison Operators
+7. == vs ===
+8. Logical Operators
+9. Unary Operators
+10. Ternary Operator
+11. Important Interview Edge Cases
 
-const obj = { name: "Aashish" };
-const arr = [1, 2, 3];
-const fn = function () {
-	return "I am function type";
+====================================================
+*/
+
+
+// ===========================================
+// 1️⃣ STRING
+// ===========================================
+
+let firstName = "Aashish";
+let lastName = 'Kumar';
+let city = `Delhi`;
+
+console.log(firstName);
+console.log(typeof firstName); // string
+
+
+
+// ===========================================
+// 2️⃣ NUMBER
+// ===========================================
+
+let age = 21;
+let price = 199.99;
+
+console.log(age);
+console.log(typeof age); // number
+
+
+
+// ===========================================
+// 3️⃣ BOOLEAN
+// ===========================================
+
+let isLoggedIn = true;
+let isAdmin = false;
+
+console.log(isLoggedIn);
+console.log(typeof isLoggedIn); // boolean
+
+
+
+// ===========================================
+// 4️⃣ UNDEFINED
+// ===========================================
+
+let score;
+
+console.log(score); // undefined
+console.log(typeof score); // undefined
+
+
+
+// ===========================================
+// 5️⃣ NULL
+// ===========================================
+
+let selectedUser = null;
+
+console.log(selectedUser);
+console.log(typeof selectedUser); // object (JS bug)
+
+
+
+// ===========================================
+// 6️⃣ SYMBOL
+// ===========================================
+
+let id1 = Symbol("id");
+let id2 = Symbol("id");
+
+console.log(id1 === id2); // false
+
+
+
+// ===========================================
+// 7️⃣ BIGINT
+// ===========================================
+
+let bigNumber = 123456789012345678901234567890n;
+
+console.log(typeof bigNumber); // bigint
+
+
+
+// ===========================================
+// 8️⃣ OBJECT (Non Primitive)
+// ===========================================
+
+let user = {
+  name: "Aashish",
+  age: 21
 };
 
-console.log("1) Primitive types:", typeof s, typeof n, typeof b, typeof nl, typeof u, typeof sym, typeof big);
-console.log("   Reference types:", typeof obj, typeof arr, typeof fn);
+console.log(user);
+console.log(typeof user); // object
 
-// 2) typeof, instanceof, Array.isArray
-console.log("2) typeof arr:", typeof arr);
-console.log("   arr instanceof Array:", arr instanceof Array);
-console.log("   Array.isArray(arr):", Array.isArray(arr));
 
-// 3) Assignment and copy behavior
+
+// ===========================================
+// 9️⃣ ARRAY
+// ===========================================
+
+let numbers = [10, 20, 30];
+
+console.log(numbers);
+console.log(typeof numbers); // object
+
+
+
+// ===========================================
+// 🔟 FUNCTION
+// ===========================================
+
+function greet(){
+  return "Hello";
+}
+
+console.log(typeof greet); // function
+
+
+
+// ===========================================
+// 1️⃣1️⃣ typeof Examples
+// ===========================================
+
+console.log(typeof "JavaScript"); // string
+console.log(typeof 100); // number
+console.log(typeof true); // boolean
+console.log(typeof undefined); // undefined
+console.log(typeof null); // object
+
+
+
+// ===========================================
+// 1️⃣2️⃣ Arithmetic Operators
+// ===========================================
+
+let a = 10;
+let b = 5;
+
+console.log(a + b); // addition
+console.log(a - b); // subtraction
+console.log(a * b); // multiplication
+console.log(a / b); // division
+console.log(a % b); // modulus
+console.log(a ** b); // exponentiation
+
+
+
+// ===========================================
+// 1️⃣3️⃣ Assignment Operators
+// ===========================================
+
 let x = 10;
-let y = x;
-y = 20;
-console.log("3) Primitive copy by value:", x, y);
 
-const ref1 = { score: 50 };
-const ref2 = ref1;
-ref2.score = 80;
-console.log("   Reference copy by address:", ref1.score, ref2.score);
+x += 5; // x = x + 5
+console.log(x);
 
-// 4) Arithmetic operators
-const a = 12;
-const c = 5;
-console.log("4) Arithmetic + - * / % **:", a + c, a - c, a * c, a / c, a % c, a ** c);
+x -= 3;
+console.log(x);
 
-// 5) Increment/decrement
-let counter = 1;
-console.log("5) post-increment:", counter++, "now", counter);
-console.log("   pre-increment:", ++counter);
+x *= 2;
+console.log(x);
 
-// 6) Assignment operators
-let value = 10;
-value += 5;
-value -= 2;
-value *= 3;
-value /= 2;
-console.log("6) Assignment chain result:", value);
+x /= 4;
+console.log(x);
 
-// 7) Comparison operators and equality
-console.log("7) == vs ===:", 5 == "5", 5 === "5");
-console.log("   != vs !==:", 5 != "5", 5 !== "5");
-console.log("   relational:", 8 > 6, 8 >= 8, 8 < 10, 8 <= 7);
 
-// 8) Logical operators short-circuit
-const isLoggedIn = true;
-const hasSubscription = false;
-console.log("8) AND:", isLoggedIn && hasSubscription);
-console.log("   OR:", isLoggedIn || hasSubscription);
-console.log("   NOT:", !isLoggedIn);
 
-// 9) Nullish coalescing and OR comparison
-const price = 0;
-console.log("9) price || 999:", price || 999);
-console.log("   price ?? 999:", price ?? 999);
+// ===========================================
+// 1️⃣4️⃣ Comparison Operators
+// ===========================================
 
-// 10) Optional chaining
-const account = {
-	profile: {
-		email: "student@example.com",
-	},
-};
-console.log("10) Optional chaining existing:", account?.profile?.email);
-console.log("    Optional chaining missing:", account?.profile?.phone);
+console.log(10 > 5);   // true
+console.log(10 < 5);   // false
+console.log(10 >= 10); // true
+console.log(10 <= 8);  // false
 
-// 11) Bitwise operators
-console.log("11) Bitwise:");
-console.log("   5 & 1 =", 5 & 1);
-console.log("   5 | 1 =", 5 | 1);
-console.log("   5 ^ 1 =", 5 ^ 1);
-console.log("   ~5 =", ~5);
-console.log("   5 << 1 =", 5 << 1);
-console.log("   5 >> 1 =", 5 >> 1);
+console.log(10 == "10");  // true (type conversion)
+console.log(10 === "10"); // false (strict check)
 
-// 12) Ternary operator
-const temp = 28;
-const weather = temp > 30 ? "Hot" : "Pleasant";
-console.log("12) Ternary result:", weather);
+console.log(10 != "10");  // false
+console.log(10 !== "10"); // true
 
-// 13) String-to-number conversion differences
-console.log("13) Number('12.5'):", Number("12.5"));
-console.log("    parseInt('12.5'):", parseInt("12.5", 10));
-console.log("    parseFloat('12.5'):", parseFloat("12.5"));
 
-// 14) Truthy/falsy in conditionals
-function checkTruthy(valueToTest) {
-	return valueToTest ? "Truthy" : "Falsy";
-}
 
-console.log("14) Truthy/falsy:", checkTruthy([]), checkTruthy(""), checkTruthy(0), checkTruthy("0"));
+// ===========================================
+// 1️⃣5️⃣ Logical Operators
+// ===========================================
 
-// 15) Common coercion corner cases
-console.log("15) [] + []:", [] + []);
-console.log("    [] + {}:", [] + {});
-console.log("    {} + []:", {} + []);
-console.log("    true + true:", true + true);
-console.log("    '5' - '2':", "5" - "2");
+let ageCheck = 20;
 
-// 16) Safe equality helper (interview utility)
-function safeEquals(left, right) {
-	return left === right;
-}
+console.log(ageCheck > 18 && ageCheck < 30); // true
+console.log(ageCheck < 18 || ageCheck > 15); // true
+console.log(!(ageCheck > 18)); // false
 
-console.log("16) safeEquals:", safeEquals(10, 10), safeEquals(10, "10"));
+
+
+// ===========================================
+// 1️⃣6️⃣ Unary Operators
+// ===========================================
+
+let num = 5;
+
+num++; // increment
+console.log(num); // 6
+
+num--; // decrement
+console.log(num); // 5
+
+
+
+// ===========================================
+// 1️⃣7️⃣ Ternary Operator
+// ===========================================
+
+let age2 = 18;
+
+let result = age2 >= 18 ? "Adult" : "Minor";
+
+console.log(result);
+
+// ===========================================
+// 1️⃣9️⃣ Type Coercion (Implicit Conversion)
+// ===========================================
+
+// JavaScript automatically converts types during operations
+
+console.log("5" + 2); // "52" (number converted to string)
+
+console.log("5" - 2); // 3 (string converted to number)
+
+console.log("5" * 2); // 10
+
+console.log("5" / 2); // 2.5
+
+console.log("5" - "2"); // 3
+
+
+
+// ===========================================
+// 2️⃣0️⃣ Explicit Type Conversion
+// ===========================================
+
+// String conversion
+
+let num1 = 100;
+let str = String(num1);
+
+console.log(str); // "100"
+console.log(typeof str); // string
+
+
+// Number conversion
+
+let strNum = "50";
+
+let convertedNum = Number(strNum);
+
+console.log(convertedNum); // 50
+console.log(typeof convertedNum); // number
+
+
+// Boolean conversion
+
+console.log(Boolean(1)); // true
+console.log(Boolean(0)); // false
+console.log(Boolean("Hello")); // true
+console.log(Boolean("")); // false
+
+
+
+// ===========================================
+// 2️⃣1️⃣ Truthy and Falsy Values
+// ===========================================
+
+// Falsy values (only 6)
+
+console.log(Boolean(false));
+console.log(Boolean(0));
+console.log(Boolean(""));
+console.log(Boolean(null));
+console.log(Boolean(undefined));
+console.log(Boolean(NaN));
+
+
+// Truthy values examples
+
+console.log(Boolean("Aashish"));
+console.log(Boolean(100));
+console.log(Boolean([]));
+console.log(Boolean({}));
+
+
+
+// ===========================================
+// 2️⃣2️⃣ Short Circuit Evaluation
+// ===========================================
+
+// OR operator
+
+console.log("" || "Default Value"); 
+// first truthy value is returned
+
+
+// AND operator
+
+console.log("Hello" && "World");
+// returns last truthy value
+
+
+
+// ===========================================
+// 2️⃣3️⃣ Nullish Coalescing Operator
+// ===========================================
+
+// returns right value if left is null or undefined
+
+let username = null;
+
+let results = username ?? "Guest";
+
+console.log(results);
+
+
+
+// ===========================================
+// 2️⃣4️⃣ NaN Examples
+// ===========================================
+
+console.log("Hello" * 5); // NaN
+
+console.log(typeof NaN); // number
+
+console.log(NaN === NaN); // false
+
+
+
+// checking NaN
+
+console.log(isNaN("Hello")); // true
+
+console.log(Number.isNaN(NaN)); // true
+
+
+
+// ===========================================
+// 2️⃣5️⃣ Important JavaScript Edge Cases
+// ===========================================
+
+// empty array comparison
+console.log([] == false); // true
+
+// empty string comparison
+console.log("" == false); // true
+
+// null comparison
+console.log(null == undefined); // true
+
+// strict comparison
+console.log(null === undefined); // false
+
+
+
+// ===========================================
+// 2️⃣6️⃣ Double NOT (!!) Trick
+// ===========================================
+
+// convert value to boolean
+
+console.log(!!"Hello"); // true
+console.log(!!0); // false
+console.log(!!1); // true
+
+// ===========================================
+// 1️⃣8️⃣ Important Interview Edge Cases
+// ===========================================
+
+// typeof null
+console.log(typeof null); // object
+
+// typeof array
+console.log(typeof []); // object
+
+// typeof NaN
+console.log(typeof NaN); // number
+
+// NaN comparison
+console.log(NaN === NaN); // false
+
+// string + number
+console.log("5" + 2); // "52"
+
+// string - number
+console.log("5" - 2); // 3
