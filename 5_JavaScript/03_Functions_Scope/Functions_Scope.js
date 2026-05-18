@@ -275,7 +275,7 @@ for (var i = 0; i < 3; i++) {
 
 }
 
-// prints 3 3 3
+// prints 3 3 3 -> because var is function scoped, not block scoped. The loop finishes and i becomes 3 before the setTimeout callbacks execute.
 
 
 
